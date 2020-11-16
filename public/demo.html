@@ -1,0 +1,29 @@
+<script src="https://unpkg.com/vue@2.6.12/dist/vue.min.js"></script>
+<script src="./MyVuetify.umd.js"></script>
+<link rel="stylesheet" href="./MyVuetify.css">
+
+<v-app id="app">
+  <v-container>
+    <form @submit.prevent="greet">
+      <v-text-field v-model="name" label="Name"></v-text-field>
+      <v-btn type="submit">Greet</v-btn>
+    </form>
+  </v-container>
+</v-app>
+
+<script>
+Vue.use(MyVuetify.plugin)
+
+new Vue({
+  el: '#app',
+  vuetify: MyVuetify.vuetify(),
+  data: () => ({
+    name: '',
+  }),
+  methods: {
+    greet() {
+      alert(`Hi ${this.name.trim() || 'there'}!`)
+    }
+  }
+})
+</script>
