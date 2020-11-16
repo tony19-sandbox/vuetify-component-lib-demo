@@ -1,22 +1,11 @@
-import Vuetify, {
-  VApp,
-  VContainer,
-  VBtn,
-  VTextField,
-} from 'vuetify/lib'
+import Vue from "vue";
+import App from "./App.vue";
+import { plugin as Vuetify, vuetify } from "./plugins/vuetify";
 
-export const vuetify = options => new Vuetify({ ...options })
+Vue.use(Vuetify)
+Vue.config.productionTip = false;
 
-export const plugin = {
-  install(Vue, options) {
-    Vue.use(Vuetify, {
-      components: {
-        VApp,
-        VContainer,
-        VBtn,
-        VTextField
-      },
-      ...options
-    })
-  }
-}
+new Vue({
+  vuetify: vuetify(),
+  render: h => h(App)
+}).$mount("#app");
